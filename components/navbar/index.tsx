@@ -5,6 +5,7 @@ import Avatar from "boring-avatars";
 import faker from "faker";
 import { Logo } from "components/logo";
 import { useRouter } from "next/dist/client/router";
+import { getNameFromIp } from "utils";
 
 type Props = {
   userIp: string;
@@ -12,14 +13,6 @@ type Props = {
 
 export const Navbar = ({ userIp }: Props) => {
   const router = useRouter();
-
-  const getNameFromIp = (ip: string) => {
-    faker.seed(Number(ip.split(".").join("")));
-
-    const name = faker.animal.type();
-    const adjective = faker.commerce.color();
-    return `${adjective} ${name}`;
-  };
 
   return (
     <Box as="header" borderBottomWidth="1px" backgroundColor="white">
