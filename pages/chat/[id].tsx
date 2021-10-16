@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/layout";
 import { Textarea, theme } from "@chakra-ui/react";
 
@@ -17,6 +17,7 @@ const Chat = ({ userIp }) => {
   const router = useRouter();
   const [time, setTime] = useState(new Date());
   const [message, setMessage] = useState("");
+  const lastMessageRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 60 * 1000);
@@ -24,6 +25,10 @@ const Chat = ({ userIp }) => {
       clearInterval(interval);
     };
   }, []);
+
+  useEffect(() => {
+    lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+  });
 
   const { id } = router.query;
 
@@ -120,7 +125,7 @@ const Chat = ({ userIp }) => {
               },
             ].map((message) => {
               return (
-                <HStack mx={4} mb={1}>
+                <HStack mx={4} mb={4}>
                   {message.sender !== userIp && (
                     <Avatar
                       size={40}
@@ -138,7 +143,7 @@ const Chat = ({ userIp }) => {
 
                   <Text
                     ml="auto"
-                    color="gray.600"
+                    color="gray.500"
                     borderRadius={8}
                     minW={200}
                     px={2}
@@ -150,6 +155,7 @@ const Chat = ({ userIp }) => {
                 </HStack>
               );
             })}
+            <Box ref={lastMessageRef} />
           </Box>
           <HStack mt={4}>
             <Textarea
