@@ -30,9 +30,14 @@ export default async function handle(req, res) {
       },
     });
 
+    console.log("created message", message);
+    console.log("triggering pusher even", message);
+
     pusher.trigger("chat.so", "send-message", {
       message,
     });
+
+    console.log("triggered pusher event");
 
     res.json({ message });
   } catch (error) {
