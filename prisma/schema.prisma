@@ -3,24 +3,30 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
-}
-
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  chats Chat[]
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Chat {
   id        String   @id @default(cuid())
   name      String
-  userId    Int
+  userIp    String
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @updatedAt @map(name: "updated_at")
 
-  user User @relation(fields: [userId], references: [id])
+
+  messages Message[]
   @@map(name: "chats")
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  text      String
+  userIp    String
+  chatId    String
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+
+  chat Chat @relation(fields: [chatId], references: [id])
 }

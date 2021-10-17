@@ -1,69 +1,66 @@
-import { PrismaClient, Prisma } from '@prisma/client'
+import { PrismaClient, Prisma } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-const userData: Prisma.UserCreateInput[] = [
+const chatData: Prisma.ChatCreateInput[] = [
   {
-    name: 'Alice',
-    email: 'alice@prisma.io',
-    posts: {
+    name: "Great chat",
+    userIp: "62.216.56.158",
+    messages: {
       create: [
         {
-          title: 'Join the Prisma Slack',
-          content: 'https://slack.prisma.io',
-          published: true,
+          text: "Hey there",
+          userIp: "62.216.56.158",
+        },
+        {
+          text: "This is a live chat",
+          userIp: "62.216.56.158",
+        },
+        {
+          text: "Try it out",
+          userIp: "62.216.56.158",
+        },
+        {
+          text: "Random strangers could join and chat with you here :D ",
+          userIp: "62.216.56.158",
         },
       ],
     },
   },
   {
-    name: 'Nilu',
-    email: 'nilu@prisma.io',
-    posts: {
+    name: "Another awesome chat",
+    userIp: "62.216.56.158",
+    messages: {
       create: [
         {
-          title: 'Follow Prisma on Twitter',
-          content: 'https://www.twitter.com/prisma',
-          published: true,
+          text: "Woot",
+          userIp: "62.216.56.158",
+        },
+        {
+          text: "We are live!!!",
+          userIp: "62.216.56.158",
         },
       ],
     },
   },
-  {
-    name: 'Mahmoud',
-    email: 'mahmoud@prisma.io',
-    posts: {
-      create: [
-        {
-          title: 'Ask a question about Prisma on GitHub',
-          content: 'https://www.github.com/prisma/prisma/discussions',
-          published: true,
-        },
-        {
-          title: 'Prisma on YouTube',
-          content: 'https://pris.ly/youtube',
-        },
-      ],
-    },
-  },
-]
+];
 
 async function main() {
-  console.log(`Start seeding ...`)
-  for (const u of userData) {
-    const user = await prisma.user.create({
-      data: u,
-    })
-    console.log(`Created user with id: ${user.id}`)
+  console.log(`Start seeding ...`);
+  for (const chat of chatData) {
+    const createdChat = await prisma.chat.create({
+      data: chat,
+    });
+    console.log(`Created chat with id: ${createdChat.id}`);
   }
-  console.log(`Seeding finished.`)
+  console.log(`Seeding finished.`);
 }
 
 main()
   .catch((e) => {
-    console.error(e)
-    process.exit(1)
+    console.error(e);
+    process.exit(1);
   })
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });

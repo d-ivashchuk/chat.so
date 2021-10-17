@@ -4,19 +4,20 @@ import { Layout, Navbar } from "components";
 import axios from "axios";
 import { Box, Center, Flex, Heading, SimpleGrid } from "@chakra-ui/layout";
 import { Button, Spinner, useColorMode, useDisclosure } from "@chakra-ui/react";
-import { useRouter } from "next/dist/client/router";
 import Avatar from "boring-avatars";
 import Link from "next/link";
 import NewChatModal from "components/new-chat-modal";
+import { useChats } from "hooks";
 
 type Props = {
   userIp: string;
 };
 
 const Index: React.FC<Props> = ({ userIp }) => {
-  const router = useRouter();
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { data: chats, isLoading } = useChats();
 
   return (
     <Box>
@@ -28,27 +29,8 @@ const Index: React.FC<Props> = ({ userIp }) => {
               Create new chat
             </Button>
           </Center>
-          {!false ? (
-            [
-              {
-                id: 123,
-                name: "Great chat",
-                createdAt: new Date(),
-                createdBy: "1.1.1.1",
-              },
-              {
-                id: 133,
-                name: "Another live chat",
-                createdAt: new Date(),
-                createdBy: "1.1.1.1",
-              },
-              {
-                id: 143,
-                name: "Another beautiful chat",
-                createdAt: new Date(),
-                createdBy: "1.1.1.1",
-              },
-            ].map((chat) => {
+          {!isLoading ? (
+            chats?.map((chat) => {
               return (
                 <Box
                   placeSelf="center"
