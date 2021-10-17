@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/layout";
-import { Spinner, Textarea, theme } from "@chakra-ui/react";
+import { Icon, Spinner, Textarea } from "@chakra-ui/react";
 
 import axios from "axios";
 import Avatar from "boring-avatars";
@@ -11,15 +11,57 @@ import { Layout, Navbar } from "components";
 import { getNameFromIp } from "utils";
 import { format } from "date-fns";
 import { IconButton } from "@chakra-ui/react";
-import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
-import { useChatMessages, useChats } from "hooks";
+import { ArrowBackIcon, ArrowForwardIcon, CheckIcon } from "@chakra-ui/icons";
+import { useChatMessages } from "hooks";
 import { useSendMessageMutation } from "hooks/mutations/useSendMessageMutation";
+import { useChannel, useEvent } from "@harelpls/use-pusher";
+import { Message } from "@prisma/client";
+import toast from "react-hot-toast";
+import { useQueryClient } from "react-query";
+import Link from "next/link";
 
 const Chat = ({ userIp }) => {
   const router = useRouter();
+  const channel = useChannel("chat.so");
+  const queryClient = useQueryClient();
   const [time, setTime] = useState(new Date());
   const [message, setMessage] = useState("");
   const lastMessageRef = useRef(null);
+
+  useEvent(channel, "send-message", ({ message }: { message: Message }) => {
+    console.log(123);
+    if (!router.asPath.includes(message.chatId)) {
+      toast.custom(
+        <Box
+          backgroundColor="white"
+          px={3}
+          py={4}
+          boxShadow="0 3px 10px rgb(0 0 0 / 10%), 0 3px 3px rgb(0 0 0 / 5%)"
+          borderRadius={4}
+        >
+          <HStack>
+            <Icon as={CheckIcon} w={4} h={4} color="green.400" />
+            <Text>
+              New message in a chat!.
+              <Box
+                sx={{
+                  a: {
+                    color: "blue.400",
+                  },
+                }}
+              >
+                <Link href={"/chat/[id]"} as={`/chat/${message.chatId}`}>
+                  {message.chatId}
+                </Link>
+              </Box>
+            </Text>
+          </HStack>
+        </Box>,
+        { duration: 4000 }
+      );
+    }
+    queryClient.refetchQueries("chatMessages");
+  });
 
   const sendMessageMutation = useSendMessageMutation();
 

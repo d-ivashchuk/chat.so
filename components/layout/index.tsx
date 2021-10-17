@@ -4,15 +4,13 @@ import { css, Global } from "@emotion/react";
 import { useColorMode } from "@chakra-ui/color-mode";
 import theme from "@chakra-ui/theme";
 import { useChannel, useEvent } from "@harelpls/use-pusher";
-import { Chat, Message } from ".prisma/client";
+import { Chat } from ".prisma/client";
 import toast from "react-hot-toast";
 import { Icon } from "@chakra-ui/react";
 import { useQueryClient } from "react-query";
 import { CheckIcon } from "@chakra-ui/icons";
 import Link from "next/link";
-import { useRouter } from "next/dist/client/router";
 export const Layout = ({ children }) => {
-  const router = useRouter();
   const channel = useChannel("chat.so");
   const { colorMode } = useColorMode();
   const queryClient = useQueryClient();
@@ -47,39 +45,6 @@ export const Layout = ({ children }) => {
       { duration: 4000 }
     );
     queryClient.refetchQueries("chats");
-  });
-  useEvent(channel, "send-message", ({ message }: { message: Message }) => {
-    if (!router.asPath.includes(message.chatId)) {
-      toast.custom(
-        <Box
-          backgroundColor="white"
-          px={3}
-          py={4}
-          boxShadow="0 3px 10px rgb(0 0 0 / 10%), 0 3px 3px rgb(0 0 0 / 5%)"
-          borderRadius={4}
-        >
-          <HStack>
-            <Icon as={CheckIcon} w={4} h={4} color="green.400" />
-            <Text>
-              New message in a chat!.
-              <Box
-                sx={{
-                  a: {
-                    color: "blue.400",
-                  },
-                }}
-              >
-                <Link href={"/chat/[id]"} as={`/chat/${message.chatId}`}>
-                  {message.chatId}
-                </Link>
-              </Box>
-            </Text>
-          </HStack>
-        </Box>,
-        { duration: 4000 }
-      );
-    }
-    queryClient.refetchQueries("chatMessages");
   });
 
   return (
