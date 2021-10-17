@@ -1,3 +1,3 @@
 export * from "./useAppUrl";
-export * from "./useChats";
-export * from "./useChatMessages";
+export * from "./queries/useChats";
+export * from "./queries/useChatMessages";

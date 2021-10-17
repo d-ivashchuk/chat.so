@@ -13,8 +13,12 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const NewChatModal = ({ onOpen, isOpen, onClose }) => {
+import { useCreateChatMutation } from "hooks/mutations/useCreateChatMutation";
+
+const NewChatModal = ({ onOpen, isOpen, onClose, userIp }) => {
   const [name, setName] = useState("");
+  const createChatMutation = useCreateChatMutation();
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -38,9 +42,16 @@ const NewChatModal = ({ onOpen, isOpen, onClose }) => {
               Close
             </Button>
             <Button
+              isDisabled={!name}
               colorScheme="twitter"
               mr={3}
-              onClick={() => console.log(name)}
+              onClick={async () => {
+                await createChatMutation.mutate({
+                  name,
+                  userIp,
+                });
+                onClose();
+              }}
             >
               Add
             </Button>

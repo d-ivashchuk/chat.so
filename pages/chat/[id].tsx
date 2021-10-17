@@ -12,13 +12,16 @@ import { getNameFromIp } from "utils";
 import { format } from "date-fns";
 import { IconButton } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
-import { useChatMessages } from "hooks";
+import { useChatMessages, useChats } from "hooks";
+import { useSendMessageMutation } from "hooks/mutations/useSendMessageMutation";
 
 const Chat = ({ userIp }) => {
   const router = useRouter();
   const [time, setTime] = useState(new Date());
   const [message, setMessage] = useState("");
   const lastMessageRef = useRef(null);
+
+  const sendMessageMutation = useSendMessageMutation();
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 60 * 1000);
@@ -34,8 +37,6 @@ const Chat = ({ userIp }) => {
   const { data: messagesByChat, isLoading } = useChatMessages({
     chatId: router.query.id as string,
   });
-
-  console.log(messagesByChat);
 
   return (
     <Box>
@@ -130,7 +131,17 @@ const Chat = ({ userIp }) => {
               size="md"
               borderRadius={50}
               icon={<ArrowForwardIcon />}
-              onClick={() => console.log(message)}
+              onClick={async () => {
+                await sendMessageMutation.mutate({
+                  text: message,
+                  userIp,
+                  chat: {
+                    connect: {
+                      id: router.query.id as string,
+                    },
+                  },
+                });
+              }}
             />
           </HStack>
         </Flex>

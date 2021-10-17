@@ -1,7 +1,11 @@
 import prisma from "lib/prisma";
 
-export default async function handle(req, res) {
-  const chats = await prisma.chat.findMany();
+export default async function handle(_, res) {
+  try {
+    const chats = await prisma.chat.findMany();
 
-  res.json({ chats });
+    res.json({ chats });
+  } catch (error) {
+    console.log(error);
+  }
 }

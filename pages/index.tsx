@@ -86,7 +86,12 @@ const Index: React.FC<Props> = ({ userIp }) => {
           )}
         </SimpleGrid>
       </Layout>
-      <NewChatModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+      <NewChatModal
+        userIp={userIp}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+      />
     </Box>
   );
 };
