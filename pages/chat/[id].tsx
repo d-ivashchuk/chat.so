@@ -4,7 +4,7 @@ import { Icon, Spinner, Textarea } from "@chakra-ui/react";
 
 import axios from "axios";
 import Avatar from "boring-avatars";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, NextApiRequest } from "next";
 
 import { useRouter } from "next/dist/client/router";
 import { Layout, Navbar } from "components";
@@ -195,7 +195,8 @@ const Chat = ({ userIp }) => {
 
 export default Chat;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  console.log("real ip?", context.req?.headers["x-real-ip"]);
   const res = await axios.get("https://geolocation-db.com/json/");
   const userIpData = res.data as { IPv4: string };
 
