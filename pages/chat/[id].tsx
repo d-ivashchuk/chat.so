@@ -196,6 +196,11 @@ export default Chat;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
-    props: { userIp: context.req?.headers["x-real-ip"] },
+    props: {
+      userIp:
+        process.env.NODE_ENV === "development"
+          ? "1.1.1.1"
+          : context.req?.headers["x-real-ip"],
+    },
   };
 };

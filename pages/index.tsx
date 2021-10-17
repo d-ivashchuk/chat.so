@@ -40,7 +40,7 @@ const Index: React.FC<Props> = ({ userIp }) => {
                   px={4}
                   py={2}
                   key={chat.id}
-                  minW={500}
+                  width="100%"
                 >
                   <Flex alignItems="center" justifyContent="space-between">
                     <Flex alignItems="center">
@@ -98,7 +98,12 @@ const Index: React.FC<Props> = ({ userIp }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
-    props: { userIp: context.req?.headers["x-real-ip"] },
+    props: {
+      userIp:
+        process.env.NODE_ENV === "development"
+          ? "1.1.1.1"
+          : context.req?.headers["x-real-ip"],
+    },
   };
 };
 
