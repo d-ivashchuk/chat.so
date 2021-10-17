@@ -141,6 +141,7 @@ const Chat = ({ userIp }) => {
                     },
                   },
                 });
+                setMessage("");
               }}
             />
           </HStack>
