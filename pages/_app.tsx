@@ -8,14 +8,18 @@ import { Toaster } from "react-hot-toast";
 import { PusherProvider } from "@harelpls/use-pusher";
 
 import { ReactQueryDevtools } from "react-query/devtools";
-import { config } from "pusher-config";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
 
+  const pusherConfig = {
+    clientKey: process.env.NEXT_PUBLIC_PUSHER_CLIENT_KEY,
+    cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
+  };
+
   return (
     <ChakraProvider>
-      <PusherProvider clientKey={config.key} cluster={config.cluster}>
+      <PusherProvider {...pusherConfig}>
         <Toaster />
 
         <QueryClientProvider client={queryClient}>
