@@ -10,7 +10,7 @@ export default async function handle(req, res) {
         chatId: id,
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: "asc",
       },
     });
 
