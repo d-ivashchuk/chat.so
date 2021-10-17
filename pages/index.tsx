@@ -96,12 +96,9 @@ const Index: React.FC<Props> = ({ userIp }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await axios.get("https://geolocation-db.com/json/");
-  const userIpData = res.data as { IPv4: string };
-
+export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
-    props: { userIp: userIpData.IPv4 },
+    props: { userIp: context.req?.headers["x-real-ip"] },
   };
 };
 
