@@ -9,6 +9,9 @@ export default async function handle(req, res) {
       where: {
         chatId: id,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
     res.json({ messagesByChat });

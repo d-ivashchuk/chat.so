@@ -12,14 +12,6 @@ export default async function handle(req, res) {
       useTLS: true,
     });
 
-    console.log({
-      appId: process.env.PUSHER_APP_ID,
-      key: process.env.NEXT_PUBLIC_PUSHER_CLIENT_KEY,
-      secret: process.env.PUSHER_SECRET,
-      cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
-      useTLS: true,
-    });
-
     const { text, userIp, chat } = req.body as Prisma.MessageCreateInput;
 
     const message = await prisma.message.create({
