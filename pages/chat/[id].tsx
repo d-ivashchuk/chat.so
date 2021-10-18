@@ -28,7 +28,6 @@ const Chat = ({ userIp }) => {
   const lastMessageRef = useRef(null);
 
   useEvent(channel, "send-message", ({ message }: { message: Message }) => {
-    console.log(123);
     if (!router.asPath.includes(message.chatId)) {
       toast.custom(
         <Box

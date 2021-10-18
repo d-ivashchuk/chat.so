@@ -21,7 +21,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ChakraProvider>
       <PusherProvider {...pusherConfig}>
         <Toaster />
-
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
             <Component {...pageProps} />

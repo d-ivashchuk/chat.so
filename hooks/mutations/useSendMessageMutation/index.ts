@@ -3,7 +3,7 @@ import { useAppUrl } from "hooks/useAppUrl";
 import { useMutation } from "react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Chat, Message } from ".prisma/client";
+import { Message } from ".prisma/client";
 
 const useSendMessageMutation = () => {
   const appUrl = useAppUrl();
@@ -21,7 +21,6 @@ const useSendMessageMutation = () => {
       onError: (error) => {
         if (error) {
           toast.error("Something went wrong");
-        } else {
         }
       },
     }
