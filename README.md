@@ -27,10 +27,10 @@ First copy the contents of the `.example.env` into `.env` file to make sure that
 To run the project including the DB execute the following commands
 
 ```console
-yarn install //install dependencies 
-docker-compose up -d //run database
-npx prisma migrate dev //sync your database with Prisma schema and generate Prisma client
-yarn run dev //to run the next.js app
+yarn install => install dependencies 
+docker-compose up -d => run database in detached mode with docker
+npx prisma migrate dev => sync your database with Prisma schema and generate Prisma client
+yarn run dev => to run the next.js app
 ```
 
 You app shall be listening for code changes at `localhost:3000`
