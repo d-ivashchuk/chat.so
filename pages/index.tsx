@@ -1,7 +1,6 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import { Layout, Navbar } from "components";
-import axios from "axios";
 import { Box, Center, Flex, Heading, SimpleGrid } from "@chakra-ui/layout";
 import { Button, Spinner, useColorMode, useDisclosure } from "@chakra-ui/react";
 import Avatar from "boring-avatars";
@@ -86,12 +85,7 @@ const Index: React.FC<Props> = ({ userIp }) => {
           )}
         </SimpleGrid>
       </Layout>
-      <NewChatModal
-        userIp={userIp}
-        isOpen={isOpen}
-        onOpen={onOpen}
-        onClose={onClose}
-      />
+      <NewChatModal userIp={userIp} isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 };

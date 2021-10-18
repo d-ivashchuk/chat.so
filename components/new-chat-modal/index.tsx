@@ -15,7 +15,7 @@ import {
 
 import { useCreateChatMutation } from "hooks/mutations/useCreateChatMutation";
 
-const NewChatModal = ({ onOpen, isOpen, onClose, userIp }) => {
+const NewChatModal = ({ isOpen, onClose, userIp }) => {
   const [name, setName] = useState("");
   const createChatMutation = useCreateChatMutation();
 

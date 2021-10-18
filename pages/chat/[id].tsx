@@ -127,7 +127,7 @@ const Chat = ({ userIp }) => {
             {!isLoading ? (
               messagesByChat?.map((message) => {
                 return (
-                  <HStack mx={4} mb={4}>
+                  <HStack key={message.id} mx={4} mb={4}>
                     {message.userIp !== userIp && (
                       <Avatar
                         size={40}

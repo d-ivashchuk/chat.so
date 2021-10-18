@@ -22,10 +22,7 @@ const useCreateChatMutation = () => {
         await queryClient.refetchQueries(["chats"]);
       },
       onError: (error) => {
-        if (error) {
-          toast.error("Something went wrong");
-        } else {
-        }
+        toast.error("Something went wrong", error);
       },
     }
   );

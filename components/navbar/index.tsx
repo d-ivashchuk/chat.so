@@ -2,7 +2,6 @@ import * as React from "react";
 import { Box, HStack, Text } from "@chakra-ui/react";
 import Avatar from "boring-avatars";
 
-import faker from "faker";
 import { Logo } from "components/logo";
 import { useRouter } from "next/dist/client/router";
 import { getNameFromIp } from "utils";
