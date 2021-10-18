@@ -21,6 +21,8 @@ To the lesser extent the following technologies:
 
 Live Chat application that allows any user to connect to it, create new chat or join the existing one and start chatting with others.
 
+https://user-images.githubusercontent.com/29632358/137722031-68d43065-a201-4d58-8f67-a200da520a90.mp4
+
 The project is available **live** here:
 
 [https://chat-so.vercel.app](https://chat-so.vercel.app)
@@ -38,13 +40,17 @@ You could find the code for it here:
 - Pusher for managed web-sockets
 
 ## Let's go 🚀
-Let's start with cloning the `starter` branch of the project(link)! We have a bare minimum setup that holds the most important dependencies for us not to care. Let's give it a quick glance.
+Let's start with cloning the [https://github.com/d-ivashchuk/chat.so/tree/starter](starer branch of the project)! We have a bare minimum setup that holds the most important dependencies for us not to care. Let's give it a quick glance.
 
 Copy the contents of `.example.env` into a `.env`(you need to create it) and populate the correct environmental variables there. You need to create a new [Pusher](https://pusher.com/channels) app to get the app keys & secrets.
 
 After you have successfully done the previous step - you can install the dependencies by running `yarn run dev`
 
-### Next.js project setup
+### ‼️ Remember ‼️
+
+If you at some point struggle with the following the tutorial - [https://github.com/d-ivashchuk/chat.so](the finished code is here) and you could verify how yours is different and hopefully learn more about the nature of the problem!
+
+## Next.js project setup
 
 `package.json` - the heart of our whole application 💛
 
@@ -161,9 +167,9 @@ We also have couple of pages already that we will use to build our application.
 
 `index.tsx` is the main entry point accessible at the root of our app - `localhost:3000/`. We will build the chat list here.
 
-`chat/[id].tsx` is a dynamic next route(link) accessible at `localhost:3000/chat/123`. We will build the actual chat here.
+`chat/[id].tsx` is a [https://nextjs.org/docs/routing/dynamic-routes](dynamic next route) accessible at `localhost:3000/chat/123`. We will build the actual chat here.
 
-### Using prisma to generate client & types
+## Using prisma to generate client & types
 
 Enough of the setup - let's get our hands dirty! So you are probably eager to know already - what's that E2E type safety, what will serve as our single source of truth for our app types? I already gave you a sneak peek earlier - we will use Prisma to drive our main application types!
 
@@ -354,11 +360,24 @@ Then we are just calling async function that uses prisma client to create chats 
 
 We are all set - let's run `npx prisma db seed` and you should see the message that our chats have been successfully created.
 
+<p align="center">
+<img width="536" alt="Screenshot 2021-10-18 at 13 31 40" src="https://user-images.githubusercontent.com/29632358/137722519-0beb6180-d33b-4e42-90ab-53e7df9748cb.png">
+</p>
+
+
 To verify it even further you could use another awesome tool from prisma ecosystem called `Prisma Studio`. It will allow your to explore your tables content in a beautiful visual editor. 
 
-Let's run `npx prisma studio` to launch it!(link)
+Let's run `npx prisma studio` to launch it! 
 
-### Creating mutations with react-query
+<p align="center">
+<img width="558" alt="Screenshot 2021-10-18 at 13 32 54" src="https://user-images.githubusercontent.com/29632358/137722692-d1d23542-fc33-4000-807a-67f275bee789.png">
+</p>
+
+<p align="center">
+<img width="1263" alt="Screenshot 2021-10-18 at 13 33 24" src="https://user-images.githubusercontent.com/29632358/137722728-3898c515-0cfb-4d3b-b784-a1d5b130823b.png">
+</p>
+
+## Creating mutations with react-query
 
 We have finished with our schema definition and type generation which means we could start building the backend for our application. Let's get straight to that.
 
