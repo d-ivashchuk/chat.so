@@ -1,3 +1,18 @@
+## Table of Contents
+- **[Prerequisites ✅](#prerequisites)**<br>
+- **[What you will be able to build 🤩](#what-you-will-be-able-to-build-)**<br>
+- **[How do we architect it 🏗](#how-do-we-architect-it-)**<br>
+- **[Next.js project setup ⬛️](#nextjs-project-setup)**<br>
+- **[Using prisma to generate client & types ◮](#using-prisma-to-generate-client--types)**<br>
+- **[Creating mutaions with react-query  ⤴️](#creating-mutations-with-react-query)**<br>
+- **[Creating queries with react-query ⤵️](#creating-queries-with-react-query)**<br>
+- **[Making our app come to life inside of React code 🚀](#making-our-app-come-to-life-inside-react-code-)**<br>
+- **[Adding real time functionalities 💬](#adding-real-time-functionalities-with-pusher-on-the-frontend)**<br>
+- **[Closing words ✨](#closing-words)**<br>
+
+<hr/>
+
+
 One of the main goals of any software product that runs in a production mode is the ability to sustain time. With time new features are added, new bugs are introduced and new maintenance challenges are raised - to make matters worse, the codebase itself is seldomly getting thinner, it only grows further and makes it even more painful for developers to manage it. 
 
 Long-term maintenance problem is already being solved at many levels in JavaScript ecosystem - [writing useful tests](https://kentcdodds.com/blog/write-tests), [typing your app](https://www.typescriptlang.org/) and many more tactical approaches for keeping code bases leaner & flexible for the change.
