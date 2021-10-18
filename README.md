@@ -14,6 +14,11 @@
   <a href="https://react-query.tanstack.com/">react-query</a>
 </div>
 
+<br />
+
+https://user-images.githubusercontent.com/29632358/137693788-24c7539c-3fd3-41f3-b303-8696e778f7a0.mp4
+
+
 ## Tutorial
 
 > This project is a part of the tutorial blog-post - learn **here** about intricacies of building E2E type-safe app!
