@@ -1,3 +1,21 @@
+<br />
+
+<div align="center">
+  <h1>E2E type-safe app example - Live chat 💬</h1>
+  <p><h3 align="center">Technologies used ⚙️</h3></p>
+  <a href="https://nextjs.org/">Next.js</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://www.prisma.io/">Prisma</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://pusher.com/">Pusher</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://chakra-ui.com/">chakra-ui</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://react-query.tanstack.com/">react-query</a>
+</div>
+
+<br />
+
 ## Table of Contents
 - **[Prerequisites ✅](#prerequisites)**<br>
 - **[What you will be able to build 🤩](#what-you-will-be-able-to-build-)**<br>
