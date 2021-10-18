@@ -40,7 +40,7 @@ Let's start with cloning the `starter` branch of the project(link)! We have a ba
 
 `package.json` - the heart of our whole application 💛
 
-``` json
+```json
 {
   "name": "hello-next", 
   "version": "1.0.0",
@@ -98,7 +98,7 @@ Let's start with cloning the `starter` branch of the project(link)! We have a ba
 
 Here we have couple of things going on, let's look at the inline code comments!
 
-```typescript
+```tsx
 import React from "react";
 import NextNprogress from "nextjs-progressbar";
 import type { AppProps } from "next/app";
@@ -203,7 +203,7 @@ model Message {
 
 Let's make sense out of it piece by piece.
 
-The following part is a mere setup where we tell Prisma that we want to use `postgresql` db & it will be accessible at the particular destination - here we specify that our database connection string is living in `.env` file. 
+The following part is a mere setup where we tell Prisma that we want to use `postgresql` db & it will be accessible at the particular destination - here we specify that our database connection string is living in `.env` file. You are also most welcome to use any other SQL db provider for this tutorial and host the database wherever you want! Here is the example of how to do this [in sqlite](https://www.prisma.io/docs/concepts/database-connectors/sqlite)
 
 Namely we should have `DATABASE_URL=postgresql://postgres:secret@localhost:5432/pg?schema=public` there, if you choose to run the database in docker by running `docker-compose up -d` at the root of the project 
 
