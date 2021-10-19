@@ -73,7 +73,7 @@ You could find the code for it here:
 - Pusher for managed web-sockets
 
 ## Let's go 🚀
-Let's start with cloning the [https://github.com/d-ivashchuk/chat.so/tree/starter](starer branch of the project)! We have a bare minimum setup that holds the most important dependencies for us not to care. Let's give it a quick glance.
+Let's start with cloning the https://github.com/d-ivashchuk/chat.so/tree/starter (starer branch of the project)! We have a bare minimum setup that holds the most important dependencies for us not to care. Let's give it a quick glance.
 
 Copy the contents of `.example.env` into a `.env`(you need to create it) and populate the correct environmental variables there. You need to create a new [Pusher](https://pusher.com/channels) app to get the app keys & secrets.
 
@@ -81,7 +81,7 @@ After you have successfully done the previous step - you can install the depende
 
 ### ‼️ Remember ‼️
 
-If you at some point struggle with the following the tutorial - [https://github.com/d-ivashchuk/chat.so](the finished code is here) and you could verify how yours is different and hopefully learn more about the nature of the problem!
+If you at some point struggle with the following the tutorial - https://github.com/d-ivashchuk/chat.so is the branch with the finished code and you could verify how yours is different and hopefully learn more about the nature of the problem!
 
 ## Next.js project setup
 
