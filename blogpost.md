@@ -200,7 +200,7 @@ We also have couple of pages already that we will use to build our application.
 
 `index.tsx` is the main entry point accessible at the root of our app - `localhost:3000/`. We will build the chat list here.
 
-`chat/[id].tsx` is a [https://nextjs.org/docs/routing/dynamic-routes](dynamic next route) accessible at `localhost:3000/chat/123`. We will build the actual chat here.
+`chat/[id].tsx` is a [dynamic next route](https://nextjs.org/docs/routing/dynamic-routes) accessible at `localhost:3000/chat/123`. We will build the actual chat here.
 
 ## Using prisma to generate client & types
 
